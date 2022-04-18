@@ -1,0 +1,4 @@
+/home/diogo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.5744.254/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/diogo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.5744.254/bin/ninja/linux/ninja -G Ninja /home/diogo/CLionProjects/DA_proj1v2
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/diogo/CLionProjects/DA_proj1v2/cmake-build-debug

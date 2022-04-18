@@ -1,0 +1,3 @@
+/home/diogo/CLionProjects/DA_proj1v2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/diogo/CLionProjects/DA_proj1v2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/diogo/CLionProjects/DA_proj1v2/cmake-build-debug/CMakeFiles/DA_proj1v2.dir
