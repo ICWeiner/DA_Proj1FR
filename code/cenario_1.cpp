@@ -34,19 +34,29 @@ void cenario_1::sort(){
 int cenario_1::place(){
     int n_estafetas = 0;
     for(auto itr = estafetas.begin(); itr != estafetas.end() ;itr++) {
+        //std::cout << encomendas.end()->peso << '\n';
         int peso = itr->pesoMax;
         int vol = itr->volMax;
+        int counter = 0;
         //std::cout << encomendas.size() << '\n';
-        while (peso >= 0 && vol >= 0 && !encomendas.empty()) {
-            //std::cout << encomendas.end()->peso << '\n';
-            if(peso - encomendas.end()->peso > 0 && vol - encomendas.end()->vol > 0) {
-                peso -= encomendas.end()->peso;
-                vol -= encomendas.end()->vol;
-                encomendas.pop_back();
-            }
-            else break;
+        while (peso - encomendas.begin()->peso >= 0 && vol - encomendas.begin()->vol >= 0 && !encomendas.empty()){
+            counter++;
+            peso -= encomendas.begin()->peso;
+            vol -= encomendas.begin()->vol;
+            encomendas.erase(encomendas.begin());
+        }
+        while (peso - encomendas.end()->peso >= 0 && vol - encomendas.end()->vol >= 0  && !encomendas.empty()) {
+            counter++;
+            peso -= encomendas.end()->peso;
+            vol -= encomendas.end()->vol;
+            encomendas.pop_back();
         }
         n_estafetas++;
+        /*std::cout << "estafeta n " << n_estafetas << " has this many packages " << counter << "\n";
+        std::cout << "leftover weight:" <<  peso  << " leftover vol:" <<    vol  << "\n" ;
+        std::cout << "heaviest thing weight:"<< encomendas.begin()->peso  <<  " heaviest thing vol:" << encomendas.begin()->vol
+        << "\n" << "lightest thing weight:" << encomendas.end()->peso << " lightest thing vol:" << encomendas.end()->vol << "\n" ;*/
+
         if(encomendas.empty()) return n_estafetas;
     }
     return n_estafetas;
