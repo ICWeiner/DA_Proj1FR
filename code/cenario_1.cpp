@@ -33,6 +33,7 @@ void cenario_1::sort(){
 
 int cenario_1::place(){
     int n_estafetas = 0;
+    int n_encomendas = 0;
     for(auto itr = estafetas.begin(); itr != estafetas.end() ;itr++) {
         //std::cout << encomendas.end()->peso << '\n';
         int peso = itr->pesoMax;
@@ -44,12 +45,14 @@ int cenario_1::place(){
             peso -= encomendas.begin()->peso;
             vol -= encomendas.begin()->vol;
             encomendas.erase(encomendas.begin());
+            n_encomendas++;
         }
         while (peso - encomendas.end()->peso >= 0 && vol - encomendas.end()->vol >= 0  && !encomendas.empty()) {
             counter++;
             peso -= encomendas.end()->peso;
             vol -= encomendas.end()->vol;
             encomendas.pop_back();
+            n_encomendas++;
         }
         n_estafetas++;
         /*std::cout << "estafeta n " << n_estafetas << " has this many packages " << counter << "\n";
@@ -57,7 +60,15 @@ int cenario_1::place(){
         std::cout << "heaviest thing weight:"<< encomendas.begin()->peso  <<  " heaviest thing vol:" << encomendas.begin()->vol
         << "\n" << "lightest thing weight:" << encomendas.end()->peso << " lightest thing vol:" << encomendas.end()->vol << "\n" ;*/
 
-        if(encomendas.empty()) return n_estafetas;
+        if(encomendas.empty()){
+            std::cout << "\nCenario 1: Otimizacao do número de estafetas\n" ;
+            std::cout << "Numero de estafetas utilizados:" << n_estafetas << "\n";
+            std::cout << "Numero de encomendas enviado: " << n_encomendas << " Numero de encomendas descartadas:" << encomendas.size()  << "\n";
+            return n_estafetas;
+        }
     }
+    std::cout << "\nCenario 1: Otimizacao do número de estafetas\n" ;
+    std::cout << "Numero de estafetas utilizados:" << n_estafetas << "\n";
+    std::cout << "Numero de encomendas enviado: " << n_encomendas << " Numero de encomendas descartadas:" << encomendas.size()  << "\n";
     return n_estafetas;
 }

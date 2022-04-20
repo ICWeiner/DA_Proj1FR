@@ -7,8 +7,8 @@
 
 #include "dataReader.h"
 
-/** @brief Class used for scenery nº2 <br>
- * In this scenery we are maximizing the number of successful deliveries that can be achieved in a day between 9:00am and 5:00 pm. <br>
+/** @brief Class used for scenery nº3 <br>
+ * In this scenario we are maximizing the number of successful deliveries that can be achieved in a day between 9:00am and 5:00 pm. <br>
  * To achieve this, a greedy algorithm was applied to an ordered vector. <br>
  * @author Rafael Morgado
  * @date April 2022
@@ -40,7 +40,7 @@ public:
      * Function to sort the vector according to the static boolean's value.
      */
     void sort();
-    /*
+    /**
      * Function to return the number of "encomendas" that will be successfully delivered between 9:00am and 5:00pm.
      */
     int place();

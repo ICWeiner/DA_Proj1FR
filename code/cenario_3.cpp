@@ -24,30 +24,20 @@ void cenario_3::sort(){
 }
 
 int cenario_3::place(){
-/*
-    //encomendas.pop_back();
-    //std::cout << encomendas.size() << '\n';
-
-    int count = 0,steps = 0;
-    for (auto itr= encomendas.end(); itr != encomendas.begin(); itr--){
-        count+= itr->duracao;
-        steps++;
-        if (steps== 125) break;
-    }
-
-    std::cout << count << '\n';*/
-
     int duracaoMax = 28800;
-    int n_Encomendas = 0;
+    int n_encomendas = 0;
     for(auto itr = encomendas.end(); itr != encomendas.begin(); --itr){
         int duracao = itr->duracao;
         //std::cout << duracao << '\n';
         if(duracaoMax-duracao>=0){
             duracaoMax-=duracao;
-            n_Encomendas++;
+            n_encomendas++;
             encomendas.pop_back();
         }
         if(encomendas.empty()) break;
     }
-    return n_Encomendas;
+    std::cout << "\nCenario 3: Otimizacao das entregas expresso\n" ;
+    std::cout << "Numero de encomendas enviado: " << n_encomendas << " Numero de encomendas descartadas:" << encomendas.size() << "\n";
+    std::cout << "Tempo de sobra: " << duracaoMax;
+    return n_encomendas;
 }

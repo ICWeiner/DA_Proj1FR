@@ -13,8 +13,8 @@ int main() {
     int w = y.place();
     int e = z.place();
 
-    std::cout << "cenario 1: "<< q << "\n";
-    std::cout << "cenario 2: "<< w << "\n";
-    std::cout << "cenario 3: "<< e << "\n";
+    //std::cout << "cenario 1: "<< q << "\n";
+    //std::cout << "cenario 2: "<< w << "\n";
+    //std::cout << "cenario 3: "<< e << "\n";
     return 0;
 }

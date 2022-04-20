@@ -25,8 +25,8 @@ std::vector<estafeta> dataReader::readEstafetas() {
             estafetaData.volMax = vol;
             estafetaData.pesoMax = peso;
             estafetaData.custo = custo;
-            estafetaData.custoKG = (float ) peso / (float )custo;
-            estafetaData.custoVol = (float ) vol / (float )custo;
+            estafetaData.custoKG = (float ) custo / (float )peso;
+            estafetaData.custoVol = (float ) custo/ (float )vol;
 
             vector.push_back(estafetaData);
         }
@@ -55,8 +55,8 @@ std::vector<encomenda> dataReader::readEncomendas() {
             encomendaData.peso = peso;
             encomendaData.recompensa = recompensa;
             encomendaData.duracao = duracao;
-            encomendaData.recompensaKG = (float ) peso / (float )recompensa;
-            encomendaData.recompensaVol = (float ) vol / (float )recompensa;
+            encomendaData.recompensaKG = (float ) recompensa / (float ) peso;
+            encomendaData.recompensaVol = (float ) recompensa / (float ) vol;
 
             vector.push_back(encomendaData);
             //std::cout << vector.end()->vol << " " << vector.end()->peso << " " << vector.end()->recompensa<< " " << vector.end()->duracao <<  "\n";

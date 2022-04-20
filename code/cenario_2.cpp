@@ -12,8 +12,7 @@ cenario_2::cenario_2(){
 }
 
 bool cenario_2::compareFloatNum(double a, double b) {
-    // Correct method to compare
-    // floating-point numbers
+    //see if two floats are extremely similar
     if (abs(a - b) < 1e-9) {
         return true;
     }
@@ -24,15 +23,15 @@ bool cenario_2::recompensaEncomendas(const encomenda& lhs, const encomenda& rhs)
     if(compareFloatNum(lhs.recompensaKG,rhs.recompensaKG)){
         return lhs.recompensaVol > rhs.recompensaVol;
     }
-    return lhs.recompensaVol < rhs.recompensaVol;
+    return lhs.recompensaKG > rhs.recompensaKG;
 }
 
 bool cenario_2::custoEstafetas(const estafeta& lhs, const estafeta& rhs){
     if(compareFloatNum(lhs.custoKG,rhs.custoKG) ){
-        return lhs.custoVol > rhs.custoVol;
+        return lhs.custoVol < rhs.custoVol;
     }
 
-    return lhs.custoVol < rhs.custoVol;
+    return lhs.custoKG < rhs.custoKG;
 }
 
 void cenario_2::sort(){
@@ -42,27 +41,38 @@ void cenario_2::sort(){
 
 int cenario_2::place(){
     int n_estafetas = 0;
+    int n_encomendas = 0;
     int lucro = 0;
 
     for(auto itr = estafetas.begin(); itr != estafetas.end() ;itr++){
         int peso = itr->pesoMax;
         int vol = itr->volMax;
-        //int lucroCurr = lucro;
-        //lucroCurr-= itr->custo;
-        while (peso >= 0 && vol >= 0) {
-            if(encomendas.empty()) return lucro;
-            if(peso - encomendas.end()->peso > 0 && vol - encomendas.end()->vol > 0) {
-                peso -= encomendas.end()->peso;
-                vol -= encomendas.end()->vol;
-                //lucroCurr += encomendas.end()->recompensa;
-                lucro += encomendas.end()->recompensa;
-                encomendas.pop_back();
-            }
-            else break;
+        int lucroCurr = -itr->custo;
+        int n_encomendasCurr = 0;
+        for(auto itrEnc = encomendas.begin(); itrEnc != encomendas.end() ;itrEnc++){
+            if(peso - itrEnc->peso >= 0 && vol - itrEnc->vol >= 0){
+                n_encomendasCurr++;
+                peso -= itrEnc->peso;
+                vol -= itrEnc->vol;
+                lucroCurr+= itrEnc->recompensa;
+                encomendas.erase(itrEnc);
+                itrEnc--;
+            }else if(peso==0 || vol==0) break;
         }
-        lucro -= itr->custo;
+        if (lucroCurr < 0){
+            std::cout << "\nCenario 2: Otimizacao do lucro\n" ;
+            std::cout << "Lucro total obtido:" << lucro << " Numero de estafetas utilizados:" << n_estafetas << "\n";
+            std::cout << "Numero de encomendas enviado: " << n_encomendas << " Numero de encomendas descartadas:" << encomendas.size() + n_encomendasCurr << "\n";
+            return lucro;
+        }
+        lucro+=lucroCurr;
+        n_encomendas += n_encomendasCurr;
         n_estafetas++;
     }
+
+    std::cout << "\nCenario 2: Otimizacao do lucro\n" ;
+    std::cout << "Lucro total obtido:" << lucro << " Numero de estafetas utilizados:" << n_estafetas << "\n";
+    std::cout << "Numero de encomendas enviado: " << n_encomendas << " Numero de encomendas descartadas:" << encomendas.size()  << "\n";
     //std::cout << n_estafetas << '\n';
     return lucro;
 }

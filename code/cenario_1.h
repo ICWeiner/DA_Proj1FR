@@ -10,7 +10,7 @@
 
 /** @brief Class used for scenery nº1 <br>
  * In this scenario we are minimizing the number of couriers for the delivery of all orders or the largest number in one day. <br>
- * To do achive this minimization we applied <br>
+ * To achieve this we used a greedy algorithms based on the bin packing problem <br>
  * @author Diogo Almeida, Diogo Nunes
  * @date April 2022
  */
@@ -42,18 +42,18 @@ public:
     static bool pesoEncomendas(const encomenda& lhs, const encomenda& rhs);
     /**
      * Boolean to determine if "estafeta" lhs's "pesoMax" is bigger than "estafeta" rhs's. <br>
-     * If both objects contain the same "pesoMax" hen they are sorted by "volMax". <br>
+     * If both objects contain the same "pesoMax" then they are sorted by "volMax". <br>
      * @param lhs left side value
      * @param rhs right side value
      * @return true if lhs is bigger than rhs or false if its smaller
      */
     static bool pesoEstafetas(const estafeta& lhs, const estafeta& rhs);
     /**
-     * Function to sort each vector according to the previously defined boolean functions given.
+     * Member function to sort each vector according to the previously defined boolean functions given.
      */
     void sort();
     /**
-     * Function to return the number of "estafetas" that will take all the "encomendas" to take from the company to deliver.
+     * Member function to return the number of "estafetas" that will take all the "encomendas" to take from the company to deliver.
      */
     int place();
 };
