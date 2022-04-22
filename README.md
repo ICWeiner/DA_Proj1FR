@@ -1,10 +1,10 @@
 # DA_Proj1FR
 
-Instructions:
+Instructions:<br>
 -run main.cpp
 
-Dependencies: 
--fstream
--iostream
--algorithm
--vector
+Dependencies: <br>
+-fstream<br>
+-iostream<br>
+-algorithm<br>
+-vector<br>
